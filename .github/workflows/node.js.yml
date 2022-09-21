@@ -26,6 +26,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install puppetteer
+    - run: npm install puppeteer
     - run: npm run replay
     - run: npm run start
