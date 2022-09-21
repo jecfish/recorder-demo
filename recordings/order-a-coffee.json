@@ -1,0 +1,133 @@
+{
+  "title": "order-a-coffee",
+  "steps": [
+    {
+      "type": "setViewport",
+      "width": 368,
+      "height": 546,
+      "deviceScaleFactor": 1,
+      "isMobile": false,
+      "hasTouch": false,
+      "isLandscape": false
+    },
+    {
+      "type": "navigate",
+      "url": "https://coffee-cart.netlify.app/",
+      "assertedEvents": [
+        {
+          "type": "navigation",
+          "url": "https://coffee-cart.netlify.app/",
+          "title": "Coffee cart"
+        }
+      ]
+    },
+    {
+      "type": "click",
+      "timeout": 8000,
+      "target": "main",
+      "selectors": [
+        [
+          "aria/Espresso"
+        ],
+        [
+          "[data-test=Espresso]"
+        ]
+      ],
+      "offsetX": 171.40187072753906,
+      "offsetY": 169.0280532836914
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "aria/Mocha"
+        ],
+        [
+          "[data-test=Mocha]"
+        ]
+      ],
+      "offsetY": 108.85617065429688,
+      "offsetX": 165.40187072753906
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "aria/Proceed to checkout"
+        ],
+        [
+          "[data-test=checkout]"
+        ]
+      ],
+      "offsetY": 18.796875,
+      "offsetX": 124.1875
+    },
+    {
+      "type": "change",
+      "value": "jec",
+      "selectors": [
+        [
+          "aria/Name"
+        ],
+        [
+          "#name"
+        ]
+      ],
+      "target": "main"
+    },
+    {
+      "type": "keyDown",
+      "target": "main",
+      "key": "Tab"
+    },
+    {
+      "type": "keyUp",
+      "key": "Tab",
+      "target": "main"
+    },
+    {
+      "type": "change",
+      "value": "jec@test.com",
+      "selectors": [
+        [
+          "aria/Email"
+        ],
+        [
+          "#email"
+        ]
+      ],
+      "target": "main"
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "aria/Promotion message"
+        ],
+        [
+          "#promotion-label"
+        ]
+      ],
+      "offsetY": 31.8203125,
+      "offsetX": 161
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "aria/Submit"
+        ],
+        [
+          "#submit-payment"
+        ]
+      ],
+      "offsetY": 11.4296875,
+      "offsetX": 19.3515625
+    }
+  ],
+  "timeout": 7000
+}

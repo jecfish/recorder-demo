@@ -1,0 +1,82 @@
+{
+  "title": "hover-add-a-coffee",
+  "steps": [
+    {
+      "type": "setViewport",
+      "width": 435,
+      "height": 580,
+      "deviceScaleFactor": 1,
+      "isMobile": false,
+      "hasTouch": false,
+      "isLandscape": false
+    },
+    {
+      "type": "navigate",
+      "url": "https://coffee-cart.netlify.app/",
+      "assertedEvents": [
+        {
+          "type": "navigation",
+          "url": "https://coffee-cart.netlify.app/",
+          "title": "Coffee cart"
+        }
+      ]
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "aria/Espresso"
+        ],
+        [
+          "[data-test=Espresso]"
+        ]
+      ],
+      "offsetY": 142.0280532836914,
+      "offsetX": 148.90187072753906
+    },
+    {
+      "type": "hover",
+      "selectors": [
+        [
+          "aria/Proceed to checkout"
+        ],
+        [
+          "[data-test=checkout]"
+        ]
+      ],
+      "frame": [],
+      "target": "main"
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "aria/Add one Espresso"
+        ],
+        [
+          "#app > div:nth-child(3) > div.pay-container > ul > li > div.unit-controller > button:nth-child(1)"
+        ]
+      ],
+      "offsetY": 13.4921875,
+      "offsetX": 12.15625
+    },
+    {
+      "type": "waitForElement",
+      "target": "main",
+      "frame": [],
+      "selectors": [
+        [
+          ".pay-container .list-item"
+        ]
+      ],
+      "operator": "==",
+      "count": 1
+    },
+    {
+      "type": "waitForExpression",
+      "expression": "document.querySelector('[data-test=\"checkout\"]').innerText === 'Total: $20.00'"
+    }
+  ]
+}
