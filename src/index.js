@@ -2,7 +2,7 @@ import url from "url";
 import { createRunner } from "@puppeteer/replay";
 import puppeteer from "puppeteer";
 import { readFileSync } from "fs";
-import { ScreenshootExtension } from "./screenshot-ext.js";
+import ScreenshootExtension from "./screenshot-ext.js";
 
 // Launch browser
 const browser = await puppeteer.launch();
