@@ -6,6 +6,7 @@ let count = 0;
 
 /**
  * An extension to take screenshot after each step
+ * For full extension interface, See https://goo.gle/puppeteer-replay
  */
  export default class ScreenshootExtension extends PuppeteerRunnerExtension {
 
