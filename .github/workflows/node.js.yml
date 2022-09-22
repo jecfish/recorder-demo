@@ -24,13 +24,5 @@ jobs:
         node-version: 18.x
         cache: 'npm'
     - run: npm install puppeteer
-  
-  replay-user-flows:
-
-    runs-on: ubuntu-latest
-
-    steps:
     - run: npm run replay
     - run: npm run start
-
-    needs: build
