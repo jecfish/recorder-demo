@@ -10,7 +10,7 @@ Demostrate how to customize the replay of JSON user flow (Generate with [Chrome 
 
 # Run the examples
 
-The `src/screenshot-ext.js` will take screenshot after every step. All JSON user flows are in the `/recordings` folder.
+The `src/screenshot-ext.js` will take screenshot after every step and save it to `_screencasts`. All JSON user flows are in the `/recordings` folder.
 
 - Use `npm start` to run the command programmatically.
 - Use `npm run replay` to run multiple recordings with Puppeteer Replay CLI.

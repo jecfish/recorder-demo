@@ -8,17 +8,18 @@ import ScreenshootExtension from "./screenshot-ext.js";
 const browser = await puppeteer.launch();
 const page = await browser.newPage();
 
-// Read the JSON user flow
+// Read a JSON user flow
 const json = readFileSync('./recordings/order-a-coffee.json', 'utf-8');
 const flow = JSON.parse(json);
 
 
-// Run the user flow
+// Setup a runner
 async function run(extension) {
   const runner = await createRunner(flow, extension);
   await runner.run();
 }
 
+// Replay the user flow with extension
 await run(new ScreenshootExtension(browser, page));
 
 // Close browser

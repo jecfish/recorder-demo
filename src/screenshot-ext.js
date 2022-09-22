@@ -2,7 +2,6 @@ import { mkdirSync } from "fs";
 import { PuppeteerRunnerExtension } from "@puppeteer/replay";
 
 mkdirSync('_screenshots', {recursive: true});
-let count = 0;
 
 /**
  * An extension to take screenshot after each step
@@ -10,11 +9,14 @@ let count = 0;
  */
  export default class ScreenshootExtension extends PuppeteerRunnerExtension {
 
+  count = 0;
+
   async afterEachStep(step, flow) {
     await super.afterEachStep(step, flow);
-    count = count + 1;
-    console.log(`Save screenshot for step ${count}.`);
-    await this.page.screenshot({ path: `_screenshots/step-${count}.png` });
+    this.count = this.count + 1;
+    const path = `_screenshots/${flow.title}-${this.count}.png`;
+    await this.page.screenshot({path});
+    console.log(`Save screenshot as ${path}`);
   }
 
   async afterAllSteps(step, flow) {
