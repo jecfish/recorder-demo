@@ -14,14 +14,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-source ./set_env_var.sh
+# For all Google Cloud services
+export PROJECT_ID=$(gcloud config get-value project)
+export REGION=${REGION:=europe-west3}
 
-echo "Create a Cloud Scheduler Job that will run the Cloud Run Job on schedule"
-# Everyday 5 minutes. See: https://crontab.guru/
-gcloud scheduler jobs update http ${SCHEDULE_NAME} \
-    --location "${REGION}" \
-    --schedule='*/5 * * * *' \
-    --http-method POST \
+# For storage bucket
+export BUCKET_NAME="user-flow-shots"
+export STORAGE_REGION="EU"
 
-# echo "Test that Cloud Scheduler can correctly run the Cloud Run job"
-# gcloud scheduler jobs run ${SCHEDULE_NAME} --location "${REGION}"
+# For Cloud Artifacts
+export CONTAINER_NAME="recording-containers"
+
+# For IAM
+export SA_NAME="user-flow-sa"
+
+# For Cloud Run job
+export JOB_NAME="user-flow"
+export JOB_TAG="v1"
+
+# For Cloud Scheduler
+export SCHEDULE_NAME="user-flow-runner"
+
+# The location of your recordings
+export RECORDING_DIR="recordings/"
+
+
+

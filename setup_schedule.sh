@@ -14,16 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-export PROJECT_ID=$(gcloud config get-value project)
-export REGION=${REGION:=europe-west3}
-
-export BUCKET_NAME=${BUCKET_NAME:=jjjttt}
-export STORAGE_REGION="EU"
-
-export SA_NAME="ggssww-sa"
-
-export JOB_NAME="ggdemo"
-export SCHEDULE_NAME="job-runner"
+source ./set_env_var.sh
 
 echo "Grant this Service account the permission to run the Cloud Run job"
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \

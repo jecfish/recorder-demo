@@ -14,28 +14,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-export PROJECT_ID=$(gcloud config get-value project)
-export REGION=${REGION:=europe-west3}
-
-export BUCKET_NAME=${BUCKET_NAME:=jjjttt}
-export STORAGE_REGION="EU"
-
-export SA_NAME="ggssww-sa"
-
-export JOB_NAME="ggdemo"
-export JOB_TAG="v1"
-
-export RECORDING_DIR="recordings/"
+source ./set_env_var.sh
 
 echo "Configure your local gcloud"
 gcloud config set project ${PROJECT_ID}
 gcloud config set run/region ${REGION}
 
 echo "Create a new Artifact Registry container repository"
-gcloud artifacts repositories create containers --repository-format=docker --location=${REGION}
+gcloud artifacts repositories create ${CONTAINER_NAME} --repository-format=docker --location=${REGION}
 
 echo "Build this repository into a container image"
-gcloud builds submit -t europe-west3-docker.pkg.dev/${PROJECT_ID}/containers/${JOB_NAME}:${JOB_TAG}
+gcloud builds submit -t ${REGION}-docker.pkg.dev/${PROJECT_ID}/${CONTAINER_NAME}/${JOB_NAME}:${JOB_TAG}
 
 # Get recordings
 no_of_recordings=$(ls $RECORDING_DIR | wc -l)
@@ -44,7 +33,7 @@ echo "Number of recordings: $no_of_recordings"
 echo "Build a Cloud Run job"
 gcloud beta run jobs create ${JOB_NAME} \
   --tasks $no_of_recordings \
-  --image ${REGION}-docker.pkg.dev/${PROJECT_ID}/containers/${JOB_NAME}:${JOB_TAG} \
+  --image ${REGION}-docker.pkg.dev/${PROJECT_ID}/${CONTAINER_NAME}/${JOB_NAME}:${JOB_TAG} \
   --service-account ${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com \
   --set-env-vars STORAGE_REGION=${STORAGE_REGION},BUCKET_NAME=${BUCKET_NAME}
 

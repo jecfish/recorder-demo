@@ -14,18 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-export PROJECT_ID=$(gcloud config get-value project)
-export REGION=${REGION:=europe-west3}
-
-export BUCKET_NAME=${BUCKET_NAME:=jjjttt}
-export STORAGE_REGION="EU"
-
-export SA_NAME="ggssww-sa"
-
-export JOB_NAME="ggdemo"
-export JOB_TAG="v1"
-
-export RECORDING_DIR="recordings/"
+source ./set_env_var.sh
 
 echo "Configure your local gcloud to use your project and a region to use for Cloud Run"
 gcloud config set project ${PROJECT_ID}
@@ -38,11 +27,11 @@ echo "Number of recordings: $no_of_recordings"
 echo "Updates job"
 gcloud beta run jobs update ${JOB_NAME} \
   --tasks $no_of_recordings \
-  --image ${REGION}-docker.pkg.dev/${PROJECT_ID}/containers/${JOB_NAME}:${JOB_TAG} \
+  --image ${REGION}-docker.pkg.dev/${PROJECT_ID}/${CONTAINER_NAME}/${JOB_NAME}:${JOB_TAG} \
   --service-account ${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com \
   --task-timeout 3600 \
   --memory 1Gi \
-  --command=npm,run,replay-parallel
+  --command=npm,run,start
 
 echo "Run the Cloud Run job"
 gcloud beta run jobs execute ${JOB_NAME}

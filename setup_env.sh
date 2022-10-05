@@ -14,15 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-export PROJECT_ID=$(gcloud config get-value project)
-export REGION=${REGION:=europe-west3}
-
-export BUCKET_NAME=${BUCKET_NAME:=jjjttt}
-export STORAGE_REGION="EU"
-
-export SA_NAME="ggssww-sa"
-
-export JOB_NAME="ggdemo"
+source ./set_env_var.sh
 
 echo "Configure your local gcloud"
 gcloud config set project ${PROJECT_ID}
