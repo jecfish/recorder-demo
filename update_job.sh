@@ -31,7 +31,7 @@ gcloud beta run jobs update ${JOB_NAME} \
   --service-account ${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com \
   --task-timeout 3600 \
   --memory 1Gi \
-  --command=npm,run,start
+  --command=npm,run,replay-cloud
 
 echo "Run the Cloud Run job"
 gcloud beta run jobs execute ${JOB_NAME}

@@ -26,12 +26,12 @@ The `src/screenshot-cloud-ext.js` will take screenshot after every step and save
 - Register for Google Cloud and Install Cloud CLI
 - Replace any variables in `./set_env_var.sh` for your need
 - Run `./setup_env.sh` to setup your local Google Cloud environment
-- Run `./setup_job.sh` to setup a Cloud Run Job
+- Run `./setup_repo_job.sh` to setup a Cloud Run Job
 - Run `./setup_schedule.sh` to setup a Cloud schedule to run the job every day 12pm
 - Check your cloud console
 
 ## Additional cloud scripts
 
 - Run `./update_job.sh` to update the job details and rerun
-- Run `./update_repo.sh` to update the artifact and job tag (e.g. increase the version)
+- Run `./update_repo_job.sh` to update the artifact and job tag (e.g. increase the version)
 - Run `./update_schedule.sh` to update the schedule to run every 5 min
