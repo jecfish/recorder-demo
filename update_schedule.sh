@@ -25,20 +25,12 @@ export SA_NAME="ggssww-sa"
 export JOB_NAME="ggdemo"
 export SCHEDULE_NAME="job-runner"
 
-echo "Grant this Service account the permission to run the Cloud Run job"
-gcloud projects add-iam-policy-binding ${PROJECT_ID} \
-    --member="serviceAccount:${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
-    --role="roles/run.invoker"
-
 echo "Create a Cloud Scheduler Job that will run the Cloud Run Job on schedule"
-# Everyday 12pm. See: https://crontab.guru/
-gcloud scheduler jobs create http ${SCHEDULE_NAME} \
+# Everyday 5 minutes. See: https://crontab.guru/
+gcloud scheduler jobs update http ${SCHEDULE_NAME} \
     --location "${REGION}" \
-    --schedule='0 12 * * *' \
-    --uri=https://${REGION}-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/${PROJECT_ID}/jobs/${JOB_NAME}:run \
+    --schedule='*/5 * * * *' \
     --http-method POST \
-    --oauth-service-account-email=${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com \
-    --oauth-token-scope=https://www.googleapis.com/auth/cloud-platform
 
 # echo "Test that Cloud Scheduler can correctly run the Cloud Run job"
 # gcloud scheduler jobs run ${SCHEDULE_NAME} --location "${REGION}"
