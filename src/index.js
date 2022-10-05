@@ -1,26 +1,27 @@
-import url from "url";
 import { createRunner } from "@puppeteer/replay";
 import puppeteer from "puppeteer";
-import { readFileSync } from "fs";
+import { readFileSync, readdirSync } from "fs";
 import ScreenshootExtension from "./screenshot-ext.js";
+
+// Get folder
+const folder = "./recordings";
+const recordings = readdirSync(folder);
 
 // Launch browser
 const browser = await puppeteer.launch();
 const page = await browser.newPage();
 
-// Read a JSON user flow
-const json = readFileSync('./recordings/order-a-coffee.json', 'utf-8');
-const flow = JSON.parse(json);
+// Loop recordings
+for (const rec of recordings) {
+  // Get user flow
+  const file = `${folder}/${rec}`;
+  const json = readFileSync(file, "utf-8");
+  const flow = JSON.parse(json);
 
-
-// Setup a runner
-async function run(extension) {
-  const runner = await createRunner(flow, extension);
+  // Replay user flow with extension
+  const runner = await createRunner(flow, new ScreenshootExtension(browser, page));
   await runner.run();
 }
-
-// Replay the user flow with extension
-await run(new ScreenshootExtension(browser, page));
 
 // Close browser
 await browser.close();
