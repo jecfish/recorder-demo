@@ -1,6 +1,5 @@
-FROM ghcr.io/puppeteer/puppeteer:18.0.5
-COPY package*.json ./
+FROM ghcr.io/puppeteer/puppeteer:latest
+COPY --chown=pptruser:pptruser package*.json ./
 RUN npm ci --omit=dev
-COPY . .
+COPY --chown=pptruser:pptruser . .
 ENTRYPOINT ["npm", "start"]
-
