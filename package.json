@@ -7,9 +7,9 @@
   "scripts": {
     "start": "node src/index.js",
     "start-cloud": "node ./src/index-cloud.js",
-    "replay": "npx @puppeteer/replay --extension ./src/screenshot-ext.js ./recordings/*.json",
-    "replay-cloud": "npx @puppeteer/replay --extension ./src/screenshot-cloud-ext.js ./recordings/*.json",
-    "replay-one": "npx @puppeteer/replay ./recordings/order-a-coffee.json"
+    "replay": "replay --extension ./src/screenshot-ext.js ./recordings/*.json",
+    "replay-cloud": "replay --extension ./src/screenshot-cloud-ext.js ./recordings/*.json",
+    "replay-one": "replay ./recordings/order-a-coffee.json"
   },
   "repository": {
     "type": "git",
