@@ -9,7 +9,8 @@
     "start-cloud": "node ./src/index-cloud.js",
     "replay": "replay --extension ./src/screenshot-ext.js ./recordings/*.json",
     "replay-cloud": "replay --extension ./src/screenshot-cloud-ext.js ./recordings/*.json",
-    "replay-one": "replay ./recordings/order-a-coffee.json"
+    "replay-one": "replay ./recordings/order-a-coffee.json",
+    "replay-debug": "DEBUG=puppeteer:protocol:* npm run replay"
   },
   "repository": {
     "type": "git",
