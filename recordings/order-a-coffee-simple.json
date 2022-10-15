@@ -1,0 +1,42 @@
+{
+  "title": "order-a-coffee-simple",
+  "steps": [
+    {
+      "type": "setViewport",
+      "width": 600,
+      "height": 1041,
+      "deviceScaleFactor": 1,
+      "isMobile": false,
+      "hasTouch": false,
+      "isLandscape": false
+    },
+    {
+      "type": "navigate",
+      "url": "https://coffee-cart.netlify.app/",
+      "assertedEvents": [
+        {
+          "type": "navigation",
+          "url": "https://coffee-cart.netlify.app/",
+          "title": "Coffee cart"
+        }
+      ]
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "aria/Espresso"
+        ],
+        [
+          "[data-test=Espresso]"
+        ],
+        [
+          "xpath///*[@data-test=\"Espresso\"]"
+        ]
+      ],
+      "offsetY": 172.6452407836914,
+      "offsetX": 147.40187072753906
+    }
+  ]
+}
