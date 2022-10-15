@@ -10,7 +10,7 @@
     "replay": "replay --extension ./src/screenshot-ext.js ./recordings/*.json",
     "replay-cloud": "replay --extension ./src/screenshot-cloud-ext.js ./recordings/*.json",
     "replay-one": "replay ./recordings/order-a-coffee.json",
-    "replay-debug": "DEBUG=puppeteer:protocol:* npm run replay"
+    "replay-debug": "DEBUG=puppeteer:protocol:SEND* replay ./recordings/order-a-coffee-simple.json"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,9 @@
   "homepage": "https://github.com/jecfish/recorder-demo#readme",
   "dependencies": {
     "@google-cloud/storage": "^6.5.2",
-    "@puppeteer/replay": "^1.3.0"
+    "@puppeteer/replay": "^1.3.1"
+  },
+  "peerDependencies": {
+    "puppeteer": "^19.0.0"
   }
 }
