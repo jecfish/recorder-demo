@@ -24,9 +24,9 @@
   "homepage": "https://github.com/jecfish/recorder-demo#readme",
   "dependencies": {
     "@google-cloud/storage": "^6.5.2",
-    "@puppeteer/replay": "^1.3.1"
+    "@puppeteer/replay": "^2.11.1"
   },
   "peerDependencies": {
-    "puppeteer": "^19.0.0"
+    "puppeteer": "^20.5.0"
   }
 }
